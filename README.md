@@ -6,4 +6,4 @@ A C++ reimagination of the Alchemical Hydra from OSRS
 
 Future Plans
 * Give player a bow, potions, and food
-* Be able to attack the bass and kill
+* Be able to attack the boss and kill it
