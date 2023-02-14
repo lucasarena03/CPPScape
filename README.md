@@ -1,6 +1,7 @@
 # CPPScape
 A C++ reimagination of the Alchemical Hydra from OSRS
 
+First Deployment
 * Got SFML and a window up and running
 * Added the player and emeny class, Runescape like movement, and the enemy tracks the player
 
