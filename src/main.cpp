@@ -10,12 +10,15 @@
 
 #include "player.hpp"
 #include "enemy.hpp"
+#include "globals.hpp"
+#include "healthbars.hpp"
 
-sf::RenderWindow window(sf::VideoMode(512, 512), "Runescape!", sf::Style::Close | sf::Style::Resize);
+sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Runescape!", sf::Style::Close | sf::Style::Resize);
 sf::Clock timeClock;
 
 Player player;
 Enemy enemy;
+HealthBar enemy_health_bar(sf::Vector2f(10.f, 10.f));
 
 static void render();
 static void update();
@@ -35,7 +38,6 @@ int main()
                 break;
             }
         }
-
         update();
         render();
     }
@@ -48,6 +50,7 @@ static void render()
     window.clear();
     enemy.render(&window);
     player.render(&window);
+    enemy_health_bar.render(&window);
     window.display();
 }
 
@@ -62,28 +65,14 @@ static void update()
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         player.move(sf::Vector2f(mousePos.x, mousePos.y));
     }
+    else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+    {
+        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+        player.shoot(sf::Vector2f(mousePos.x, mousePos.y));
+    }
 
-    // update player AND ENEMY
+    // update player AND ENEMY bullets when they hit enemy
     player.update(dt);
     enemy.update(dt, &player);
-
-
-    // Player can shoot bullets at the enemy
-    // sf::RectangleShape bullet(sf::Vector2f(10.f, 10.f));
-    // bullet.setFillColor(sf::Color::Green);
-    // bullet.setPosition(player.getPosition());
-
-    // if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
-    // {
-    //     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-    //     sf::Vector2f playerPos = player.getPosition();
-    //     sf::Vector2f direction = sf::Vector2f(mousePos.x - playerPos.x, mousePos.y - playerPos.y);
-    //     float length = sqrt((direction.x * direction.x) + (direction.y * direction.y));
-    //     if (length != 0)
-    //     {
-    //         direction.x /= length;
-    //         direction.y /= length;
-    //     }
-    //     bullet.move(.30f * direction);
-    // }
+    enemy_health_bar.update((float)enemy.get_health() / enemy.get_max_health());
 }
