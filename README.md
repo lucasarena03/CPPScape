@@ -21,4 +21,6 @@ Future Plans
 * Give player a bow, potions, and food
 
 Project Reason
-I choose this project because of my interest and enjoyment of the mechanics from the boss in the game. I also wanted to challenge my self by creating a fun game from scratch in SFML and use it as a learning oppurtunity to apply my skills from COP 3003. It was a very fun project to test my programming skills by creating a game to be enjoyed by others.
+*I choose this project because of my interest and enjoyment of the mechanics from the boss in the game. 
+*I also wanted to challenge my self by creating a fun game from scratch in SFML and use it as a learning oppurtunity to apply my skills from COP 3003. 
+*It was a very fun project to test my programming skills by creating a game to be enjoyed by others.
