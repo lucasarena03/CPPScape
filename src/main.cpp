@@ -48,8 +48,10 @@ int main()
 static void render()
 {
     window.clear();
-    enemy.render(&window);
-    player.render(&window);
+    if (!enemy.is_dead())
+        enemy.render(&window);
+    if (!player.is_dead())
+        player.render(&window);
     enemy_health_bar.render(&window);
     window.display();
 }
@@ -72,7 +74,9 @@ static void update()
     }
 
     // update player AND ENEMY bullets when they hit enemy
-    player.update(dt);
-    enemy.update(dt, &player);
+    if (!player.is_dead())
+        player.update(dt, &enemy);
+    if (!enemy.is_dead())
+        enemy.update(dt, &player);
     enemy_health_bar.update((float)enemy.get_health() / enemy.get_max_health());
 }

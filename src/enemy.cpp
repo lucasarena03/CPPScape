@@ -1,5 +1,4 @@
 #include "enemy.hpp"
-
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -68,6 +67,13 @@ void Enemy::update(float dt, Player *player)
             bullets.erase(bullets.begin() + i--);
         }
     }
+    //if enemy is dead, remove it from screen and stop shooting
+    if (this->is_dead())
+    {
+        this->shape.setPosition(-100, -100);
+        this->bullets.clear();
+    }
+
 }
 
 void Enemy::render(sf::RenderTarget *target)
@@ -76,6 +82,13 @@ void Enemy::render(sf::RenderTarget *target)
     for (auto &bullet : bullets)
     {
         bullet.render(target);
+    }
+
+    //if enemy is dead, remove it screen
+    if (this->is_dead())
+    {
+        this->shape.setPosition(-100, -100);
+        this->bullets.clear();
     }
 }
 
@@ -90,6 +103,7 @@ void Enemy::move(sf::Vector2f target_position)
     this->velocity = direction * SPEED;
     this->position += this->velocity;
     this->shape.setPosition(this->position);
+    
 }
 
 bool Enemy::is_dead()
@@ -139,8 +153,9 @@ void Enemy::special_attack(sf::Vector2f target_pos)
         target_pos += sf::Vector2f(rand() % 70 - 35, rand() % 70 - 35);
     }
 }
-
 std::vector<Bullet> &Enemy::getBullets()
 {
     return this->bullets;
 }
+
+

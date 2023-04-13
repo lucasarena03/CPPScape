@@ -3,6 +3,7 @@
 
 #include "player.hpp"
 #include "bullet.hpp"
+
 #include <SFML/Graphics.hpp>
 
 class Enemy
@@ -10,7 +11,7 @@ class Enemy
 private:
     const float SPEED = 25.f;
     const int MAX_HEALTH = 100;
-    const float SHOOT_INTERVAL = 1.f; // shoot every 1 second
+    const float SHOOT_INTERVAL = 5.f; // shoot every 1 second
     sf::Vector2f position;
     sf::Vector2f velocity;
     sf::RectangleShape shape;

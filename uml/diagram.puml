@@ -1,0 +1,110 @@
+@startuml diagram
+abstract class Entity {
+- position: sf::Vector2f
+- velocity: sf::Vector2f
+- shape: sf::RectangleShape
+- dead: bool = false
+
++ Entity()
++ ~Entity()
++ update(dt: float): void
++ render(target: sf::RenderTarget*): void
++ getPosition(): sf::Vector2f
++ is_dead(): bool
++ set_dead(dead: bool): void
+}
+
+Entity <|-- Player 
+
+class Player {
+- WIDTH: float
+- HEIGHT: float
+- SHOOT_INTERVAL: long
+- SPEED: float
+- position: sf::Vector2f
+- velocity: sf::Vector2f
+- shape: sf::RectangleShape
+- target_position: sf::Vector2f
+- bullets: std::vector<Bullet>
+- shoot_timer: sf::Clock
+- MAX_HEALTH: int
+- health: int
+- healthbar: HealthBar
+
++ Player()
++ ~Player()
++ update(dt: float, enemy: Enemy*)
++ render(target: sf::RenderTarget*)
++ move(target_position: sf::Vector2f)
++ getPosition(): sf::Vector2f
++ shoot(target_position: sf::Vector2f)
++ getBullets(): std::vector<Bullet>&
++ hit()
++ get_health(): int
++ get_max_health(): int
++ set_health(health: int)
++ is_dead(): bool
++ set_dead(dead: bool)
+}
+
+Entity <|-- Enemy
+
+class Enemy {
+- SPEED: float
+- MAX_HEALTH: int
+- SHOOT_INTERVAL: float
+- position: sf::Vector2f
+- velocity: sf::Vector2f
+- shape: sf::RectangleShape
+- health: int
+- bullets: std::vector<Bullet>
+- shoot_timer: sf::Clock
+- attacks: int
+
++ Enemy()
++ ~Enemy()
++ update(dt: float, player: Player*): void
++ render(target: sf::RenderTarget*): void
++ move(target_position: sf::Vector2f): void
++ getPosition(): sf::Vector2f
++ is_dead(): bool
++ set_dead(dead: bool): void
++ hit(): void
++ get_health(): int
++ get_max_health(): int
++ set_health(health: int): void
++ getBullets(): std::vector<Bullet>&
++ shoot(target_pos: sf::Vector2f): void
++ special_attack(target_pos: sf::Vector2f): void
+}
+
+Entity <|-- Bullet
+
+class HealthBar {
+- HEIGHT: float
+- border: sf::RectangleShape
+- bar: sf::RectangleShape
+- WIDTH: float
+
++ HealthBar(position: sf::Vector2f)
++ update(health_percentage: float): void
++ render(target: sf::RenderTarget*): void
++ setPosition(position: sf::Vector2f): void
+}
+
+class Bullet {
+- SPEED: float
+- position: sf::Vector2f
+- velocity: sf::Vector2f
+- shape: sf::RectangleShape
+- dead: bool = false
+
++ Bullet(pos: sf::Vector2f, target_pos: sf::Vector2f)
++ update(dt: float): void
++ render(target: sf::RenderTarget*): void
++ getGlobalBounds(): sf::FloatRect
++ is_dead(): bool
++ set_dead(dead: bool): void
+}
+
+@enduml

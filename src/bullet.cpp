@@ -1,6 +1,7 @@
 #include "bullet.hpp"
 #include <cmath>
 #include <iostream>
+
 #include "globals.hpp"
 
 Bullet::Bullet(sf::Vector2f pos, sf::Vector2f target_pos)

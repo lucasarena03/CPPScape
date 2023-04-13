@@ -1,14 +1,17 @@
-
 #include "player.hpp"
+
 #include <iostream>
 #include <cmath>
 #include <vector>
+
+#include "globals.hpp"
+#include "enemy.hpp"
 
 Player::Player()
 {
     this->position = sf::Vector2f(0.f, 0.f);
     this->velocity = sf::Vector2f(0.f, 0.f);
-    this->shape.setSize(sf::Vector2f(32.f, 32.f));
+    this->shape.setSize(sf::Vector2f(WIDTH, HEIGHT));
     this->shape.setFillColor(sf::Color::Red);
     this->shape.setPosition(this->position);
 }
@@ -17,7 +20,7 @@ Player::~Player()
 {
 }
 
-void Player::update(float dt)
+void Player::update(float dt, Enemy *enemy)
 {
     // Calculate the velocity from the target position and current position
     sf::Vector2f direction = target_position - position;
@@ -42,6 +45,29 @@ void Player::update(float dt)
             bullets.erase(bullets.begin() + i--);
         }
     }
+
+    for (auto &bullet : enemy->getBullets())
+    {
+        if (bullet.is_dead())
+        {
+            continue;
+        }
+        if (bullet.getGlobalBounds().intersects(this->shape.getGlobalBounds()))
+        {
+            bullet.set_dead(true);
+            this->hit();
+        }
+    }
+
+    //Check if player is dead and remove from screen
+    if (this->health <= 0)
+    {
+        this->set_dead(true);
+    }
+
+    healthbar.setPosition(sf::Vector2f(this->position.x + WIDTH / 2 - healthbar.WIDTH / 2, this->position.y - 20));
+
+    healthbar.update(this->health / (float)this->MAX_HEALTH);
 }
 
 void Player::render(sf::RenderTarget *target)
@@ -52,6 +78,15 @@ void Player::render(sf::RenderTarget *target)
     {
         bullet.render(target);
     }
+
+    //if player is dead, remove it screen
+    if (this->is_dead())
+    {
+        this->shape.setPosition(-100, -100);
+        this->bullets.clear();
+    }
+
+    healthbar.render(target);
 }
 
 void Player::move(sf::Vector2f target_positon)
@@ -74,4 +109,41 @@ std::vector<Bullet> &Player::getBullets()
 {
     return this->bullets;
 }
+
+bool Player::is_dead()
+{
+    return this->health <= 0;
+}
+
+void Player::set_dead(bool dead)
+{
+    if (dead)
+    {
+        this->health = 0;
+    }
+}
+
+void Player::hit()
+{
+    this->health -= 10;
+}
+
+int Player::get_health()
+{
+    return this->health;
+}
+
+int Player::get_max_health()
+{
+    return this->MAX_HEALTH;
+}
+
+void Player::set_health(int health)
+{
+    this->health = health;
+}
+
+
+
+
 
