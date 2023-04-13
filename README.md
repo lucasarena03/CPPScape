@@ -22,3 +22,5 @@
 * It was a very fun project to test my programming skills by creating a game to be enjoyed by others.
 
 Note: The inheritance subclass does not function currently, although I plan to incorporate it later.
+
+![diagram](out/uml/diagram/diagram.png)
