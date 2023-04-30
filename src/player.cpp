@@ -16,7 +16,6 @@
 
 /**
  * @brief Player constructor
- *
  */
 Player::Player()
 {
@@ -40,7 +39,6 @@ Player::~Player()
 
 /**
  * @brief Update the player
- *
  */
 void Player::update(float dt, Enemy *enemy)
 {
