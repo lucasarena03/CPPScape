@@ -25,11 +25,11 @@ class Player {
 - velocity: sf::Vector2f
 - shape: sf::RectangleShape
 - target_position: sf::Vector2f
-- bullets: std::vector<Bullet>
 - shoot_timer: sf::Clock
 - MAX_HEALTH: int
 - health: int
 - healthbar: HealthBar
+- weapon: Weapon
 
 + Player()
 + ~Player()
@@ -57,7 +57,7 @@ class Enemy {
 - velocity: sf::Vector2f
 - shape: sf::RectangleShape
 - health: int
-- bullets: std::vector<Bullet>
+- weapon: Weapon
 - shoot_timer: sf::Clock
 - attacks: int
 
@@ -106,5 +106,16 @@ class Bullet {
 + is_dead(): bool
 + set_dead(dead: bool): void
 }
+
+class Weapon {
+    - bullets : std::vector<Bullet>
+    + Weapon()
+    + ~Weapon()
+    + update(float dt)
+    + render(sf::RenderTarget *target)
+    + getBullets() : std::vector<Bullet>&
+}
+
+Weapon -> Bullet : has many >
 
 @enduml

@@ -1,3 +1,10 @@
+/**
+ * @file main.cpp
+ * @brief Main file for the game
+ * @author Lucas Arena
+ * @version 0.1
+ */
+
 #include <iostream>
 #include <cmath>
 #include <SFML/Graphics.hpp>
@@ -12,20 +19,25 @@
 #include "enemy.hpp"
 #include "globals.hpp"
 #include "healthbars.hpp"
+#include "ground.hpp"
 
-sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Runescape!", sf::Style::Close | sf::Style::Resize);
+// Window
+sf::RenderWindow window(sf::VideoMode(W_WIDTH, W_HEIGHT), "Runescape!", sf::Style::Close | sf::Style::Resize);
 sf::Clock timeClock;
 
+// Game objects
 Player player;
 Enemy enemy;
+Ground ground;
 HealthBar enemy_health_bar(sf::Vector2f(10.f, 10.f));
 
+// Functions
 static void render();
 static void update();
 
 int main()
 {
-
+    // Game loop
     while (window.isOpen())
     {
         sf::Event event;
@@ -45,9 +57,14 @@ int main()
     return 0;
 }
 
+/**
+ * @brief Render all game objects
+ */
 static void render()
 {
+    // Render
     window.clear();
+    ground.render(&window);
     if (!enemy.is_dead())
         enemy.render(&window);
     if (!player.is_dead())
@@ -56,12 +73,16 @@ static void render()
     window.display();
 }
 
+/**
+ * @brief Update all game objects
+ */
 static void update()
 {
+    // Update clock
     sf::Time elapsed = timeClock.restart();
     float dt = elapsed.asSeconds();
 
-    // movement handling
+    // Mouse input
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
@@ -73,7 +94,7 @@ static void update()
         player.shoot(sf::Vector2f(mousePos.x, mousePos.y));
     }
 
-    // update player AND ENEMY bullets when they hit enemy
+    // Update game objects
     if (!player.is_dead())
         player.update(dt, &enemy);
     if (!enemy.is_dead())
