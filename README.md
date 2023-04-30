@@ -27,5 +27,4 @@
 ## First Phase
 ![First Phase](https://user-images.githubusercontent.com/109772230/235329277-857d704f-05ec-4b98-95e5-9df4366302fe.png)
 ## Second Phase
-![Second Phase](https://user-images.githubusercontent.com/109772230/235329264-fa776a98-f1c4-4755-a34b-b69558f0783d.png)
-
+![Second Phase](https://user-images.githubusercontent.com/109772230/235329439-2cd79a1a-3fda-4d3b-b238-b367be97ff8d.png)
