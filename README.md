@@ -12,13 +12,19 @@
 * Implemented enemy attacks, allowing for strategic gameplay. 
 * Implemented player attacks and health bars, making it possible to damage the boss.
 
-## Future Plans
-* Enhance the game with textures to improve visual appeal.
-* Equip the player with a bow, potions, and food to expand the gameplay experience.
+## Final Deployment
+* Enhanced the game with textures to improve visual appeal.
+* Added second phase to the enemy.
 
 ## Project Reason
 * I choose this project because of my interest and enjoyment of the mechanics from the boss in the game. 
 * I also wanted to challenge my self by creating a fun game from scratch in SFML and use it as a learning oppurtunity to apply my skills from COP 3003. 
 * It was a very fun project to test my programming skills by creating a game to be enjoyed by others.
+* 
+## CLass UML
+![Class UML](https://user-images.githubusercontent.com/109772230/235329286-aff39521-730a-477d-acd2-db1083c891bc.png)
 
-Note: The inheritance subclass does not function currently, although I plan to incorporate it later.
+## First Phase
+![First Phase](https://user-images.githubusercontent.com/109772230/235329277-857d704f-05ec-4b98-95e5-9df4366302fe.png)
+## Second Phase
+![Second Phase](https://user-images.githubusercontent.com/109772230/235329439-2cd79a1a-3fda-4d3b-b238-b367be97ff8d.png)
