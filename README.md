@@ -21,7 +21,7 @@
 * I also wanted to challenge my self by creating a fun game from scratch in SFML and use it as a learning oppurtunity to apply my skills from COP 3003. 
 * It was a very fun project to test my programming skills by creating a game to be enjoyed by others.
 
-![Class UML](assets/uml.png)
-![First Phase](assets/game1.png)
-![Second Phase](assets/g![uml](https://user-images.githubusercontent.com/109772230/235329251-eaf41ef8-78cb-4610-89f9-fab117a588ce.png)
-ame2.png)
+![Class UML](https://user-images.githubusercontent.com/109772230/235329286-aff39521-730a-477d-acd2-db1083c891bc.png)
+[First Phase](https://user-images.githubusercontent.com/109772230/235329277-857d704f-05ec-4b98-95e5-9df4366302fe.png)
+![Second Phase](https://user-images.githubusercontent.com/109772230/235329264-fa776a98-f1c4-4755-a34b-b69558f0783d.png)
+
