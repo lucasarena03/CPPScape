@@ -1,5 +1,5 @@
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/lucasarena03/CPPScape/badge)](https://securityscorecards.dev/viewer/?uri=github.com/lucasarena03/CPPScape)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8616/badge)](https://www.bestpractices.dev/projects/8616)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8618/badge)](https://www.bestpractices.dev/projects/8618)
 
 # CPPScape
 ## A C++ reimagination of the Alchemical Hydra from OSRS
