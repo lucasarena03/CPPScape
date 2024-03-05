@@ -1,3 +1,4 @@
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/{lucasarena03}/{CPPScape}/badge)](https://securityscorecards.dev/viewer/?uri=github.com/{lucasarena03}/{CPPScape})
 # CPPScape
 ## A C++ reimagination of the Alchemical Hydra from OSRS
  
